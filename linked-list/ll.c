@@ -140,3 +140,40 @@ void deleteLast(LIST li)
 
     return;
 }
+
+// from here i am writing my own funtions implimentatios 
+
+void isEmpty(LIST li)
+{
+    if ( li->head == NULL && li->count == 0){
+        printf("list is empty");
+        return;
+    }else{
+        printf("this list contasin %d nodes\n", li->count);
+    }
+}
+
+NODE search(LIST li, int value){
+
+    if (li->head == NULL){
+        printf("the list emptuy seraching is not possible\n");
+        return NULL;;
+    }
+    else{
+        NODE temp = li->head;
+        int count = 1;
+       
+        while(temp != NULL){
+            if (temp->ele == value){
+                printf("yipee we fount your vaue at %d node of list\n", count);
+                return temp;
+            }else{
+                temp = temp->next;
+                count++;
+            }
+        }
+        return NULL;
+    }
+
+
+}

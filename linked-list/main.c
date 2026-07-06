@@ -44,6 +44,13 @@ int main(){
     deleteLast(mylist);
     printList(mylist);
 
+    // my own written functions 
+
+    isEmpty(mylist);
+
+
+    search(mylist, 70);
+
     return 1;
 
 

@@ -42,6 +42,9 @@ void deleteFisrt(LIST li);
 
 void deleteLast(LIST li);
 
+void isEmpty(LIST li);
+
+NODE search(LIST li, int value);
 
 
 
