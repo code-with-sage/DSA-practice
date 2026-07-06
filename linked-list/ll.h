@@ -12,7 +12,7 @@
 typedef struct node {
     int ele;
     // NODE next;  this is bad practice we are using typedef before decalreing it 
-    struct node *next;
+    struct node* next;
      
 }*NODE;
 
@@ -22,7 +22,7 @@ typedef struct node {
 
 typedef struct linked_list {
     int count;
-    NODE *head;
+    NODE head;
 
 }*LIST;
 
