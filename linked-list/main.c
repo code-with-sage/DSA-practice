@@ -32,7 +32,19 @@ int main(){
     
     printList(mylist);
 
+    NODE n11 = createNewNode(110);
 
+    insertLast(n11 , mylist);
+
+    printList(mylist);
+
+    deleteFisrt(mylist);
+    printList(mylist);
+
+    deleteLast(mylist);
+    printList(mylist);
+
+    return 1;
 
 
 

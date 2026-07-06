@@ -31,10 +31,13 @@ NODE createNewNode(int value)
 
 void insertFisrt(NODE n1, LIST li)
 {
-    if (li->head == NULL){
+    if (li->head == NULL)
+    {
         li->head = n1;
         n1->next = NULL;
-    }else{
+    }
+    else
+    {
 
         NODE temp = li->head;
         li->head = n1;
@@ -43,6 +46,29 @@ void insertFisrt(NODE n1, LIST li)
     li->count++;
     return;
 };
+
+void insertLast(NODE n1, LIST li)
+{
+    if (li->head == NULL)
+    {
+        li->head = n1;
+        n1->next = NULL;
+    }
+    else
+    {
+        NODE temp = li->head;
+
+        while (temp->next != NULL)
+        { // i used temp->next not temp beause we need to stop at last element not NULL
+            temp = temp->next;
+        }
+
+        temp->next = n1;
+        n1->next = NULL;
+    }
+    li->count++;
+    return;
+}
 
 // void printList(LIST li)
 // {
@@ -54,7 +80,7 @@ void insertFisrt(NODE n1, LIST li)
 //     }
 //     return;
 
-// }    althogh this is a valid way of printing elemts of list but we avoid it because it depends on metadata better we use following apraoch to print elements 
+// }    althogh this is a valid way of printing elemts of list but we avoid it because it depends on metadata better we use following apraoch to print elements
 
 void printList(LIST li)
 {
@@ -62,12 +88,55 @@ void printList(LIST li)
 
     printf("[HEAD]-> ");
 
-    while ( temp != NULL){
-        printf( "%d ->", temp->ele);
+    while (temp != NULL)
+    {
+        printf("%d ->", temp->ele);
         temp = temp->next;
     }
-    printf("[NULL]");
-    
+    printf("[NULL]\n");
+
     return;
 };
 
+void deleteFisrt(LIST li)
+{
+    if (li->head == NULL)
+    {
+        printf("list is eplty no element found to delete");
+        return;
+    }
+    else
+    {
+        NODE temp = li->head;  // temp storing first node address
+        li->head = temp->next; // now head storing address of node after first node = secound node
+        li->count--;
+        free(temp); // temp storing first node pointer we can still free and and there is no memeory leak
+    }
+    return;
+}
+
+void deleteLast(LIST li)
+{
+    if (li->head == NULL)
+    {
+        printf("the list is empty unable to process yoru request ");
+        return;
+    }
+    else
+    {
+        NODE curr = li->head;
+        NODE prev = curr;
+
+        while (curr->next != NULL)
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+        prev->next = NULL;
+        free(curr);
+        li->count--;
+        
+    }
+
+    return;
+}
