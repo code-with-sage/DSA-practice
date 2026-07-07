@@ -51,6 +51,16 @@ int main(){
 
     search(mylist, 70);
 
+    insertAfter(30,35, mylist);
+
+    printList(mylist);
+
+    deleteElement(10,mylist);
+    printList(mylist);
+
+    deleteEle(90, mylist);
+    printList(mylist);
+
     return 1;
 
 
