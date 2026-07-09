@@ -1,3 +1,6 @@
+#ifndef CLL_H
+#define CLL_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,6 +32,7 @@ void insertlast(C_LIST li ,NODE n);
 void deleteEle(C_LIST li ,int roll);
 NODE searchByROll(C_LIST li ,int roll);
 NODE searchByName(C_LIST li, char name[]);
+void printmenu();
 
 
-
+#endif 
