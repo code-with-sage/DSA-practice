@@ -2,10 +2,10 @@
 
 STACK createNewStack(char n[])
 {
-     STACK s = malloc(sizeof(STACK));
-     s->ll = createNewList;
-     strcpy(s->name, n);
-     return s;
+    STACK s = malloc(sizeof(struct stack));  //i was definde STACK it was throwing error 
+    s->ll = createNewList();
+    strcpy(s->name, n);
+    return s;
 }
 int isEmpty(STACK s)
 {
@@ -13,11 +13,23 @@ int isEmpty(STACK s)
 }
 int top(STACK s)
 {
-    return  s->ll->head->ele;
+    printf("top() called\n");
+
+    if (s->ll->head == NULL)
+    {
+        printf("Head is NULL\n");
+        return -1;
+    }
+
+    printf("Head element = %d\n", s->ll->head->ele);
+
+    return s->ll->head->ele;
 }
+
 int pop(STACK s)
-{ 
-    if (isEmpty(s)){
+{
+    if (isEmpty(s))
+    {
         printf("stack underflow error\n");
         exit(1);
     }
@@ -25,10 +37,8 @@ int pop(STACK s)
 }
 void push(STACK s, int ele)
 {
-    if (isEmpty(s)){
-        printf("stack underflow error\n");
-        exit(1);
-    }
+    printf("pussig form stack_list %d", ele);
     NODE n = createNewNode(ele);
-    insertFisrt(n , s->ll);
+    insertFisrt(n, s->ll);
+    printf("pushing suceeded");
 }

@@ -1,6 +1,18 @@
 #include "stack_List.h"
-#include <stdlib.h>
-#include <stdio.h>
+
+// declareing the structure of string that will store all stack will be created
+
+typedef struct entry
+{
+    char name[20];
+    STACK ptr;
+} stackesEntry;
+
+stackesEntry arr[20]; // inicializing adday of user defined datatype  for storing data
+int stackCount = 0;   // it will kewp track of how many entry are in the stack
+
+void addEntry(char *name);   // using void becuse no need to return anyhtig
+STACK findStack(char *name); // using stack because need to find stack and return stack pointer
 
 int main()
 {
@@ -8,55 +20,89 @@ int main()
     printf("======   welcme to stack implimetioan program  =====\n");
     printf("====================================================\n\n");
 
-    char name[20];
+    // char name[20];
 
-    printf("please enter your nickname: ");
+    // printf("please enter your nickname: ");
 
-    scanf("%19s", name);
+    // scanf("%19s", name);
 
-    getchar();
+    // getchar(); // when we use scanf in last \n remain it helps to crlear that
 
-    printf("hello %s if you are new here type man ^ _ ^ :\n\n", name);
+    // printf("hello %s if you are new here type man ^ _ ^ :\n\n", name);
 
-    char cmd[100];
+    char cmd[100]; // defining the size of inpout possible in command
 
-    printf("please ceate atlest one stack : ");
-    char stkn[10];
-    scanf("%9s", stkn);
-    getchar();
-    createNewStack(stkn);
+    // printf("please ceate atlest one stack : ");
+    // char stkn[10];
+    // scanf("%9s", stkn);
+    // getchar();
+
+    // addEntry(stkn);
 
     while (1)
     {
 
         printf("write your comman ~~> ");
+
+        // fgets with stdin use to copy the dtring types in command line
         fgets(cmd, sizeof(cmd), stdin);
 
-        char *command = strtok(cmd, " ");
-        char *stackname = strtok(NULL, " ");
-        char *val = strtok(NULL, "\n");
+        // parsing using strtok and storing values
 
-        if (strcmp(command, "push") == 0)
+        char *command = strtok(cmd, " \r\n");
+        char *stackname = strtok(NULL, " \r\n");
+        char *val = strtok(NULL, " \r\n");
+
+        printf("command=%s\n", command);
+        printf("stack=%s\n", stackname);
+        printf("value=%s\n", val);
+
+        if (strcmp(command, "push") == 0) // strcmp() use to compare 2 tring and if both same it return 0
         {
-            if (stackname == NULL || val == NULL)
+            STACK s = findStack(stackname); // finding stack
+
+            if (s != NULL)
             {
-                printf("Usage: push <stack> <value>\n");
-                continue;
+                printf("Pushing %s\n", val);
+                push(s, atoi(val)); // IMPORTANT : check the datatype before passing to fun
+                printf("push completed");
             }
-            int value = atoi(val);
-            push(stackname, value);
+            else
+            {
+                printf("Stack not found.\n");
+            }
         }
         else if (strcmp(command, "pop") == 0)
         {
-            pop(stackname);
+            STACK s = findStack(stackname);
+            if (s != NULL)
+            {
+                pop(s); // performing operation if the stack found
+            }
+            else
+            {
+                printf("Stack not found.\n");
+            }
         }
         else if (strcmp(command, "top") == 0)
         {
-            top(stackname);
+            STACK s = findStack(stackname);
+            if (s != NULL)
+            {
+               printf("Top = %d\n", top(s));
+            }
+            else
+            {
+                printf("Stack not found.\n");
+            }
         }
         else if (strcmp(command, "new") == 0)
         {
-            createNewStack(stackname);
+            addEntry(stackname);
+        }
+        else if (strcmp(command, "man") == 0)
+        {
+            manual();
         }
         else if (strcmp(command, "exit") == 0)
         {
@@ -67,4 +113,27 @@ int main()
             printf("Unknown command\n");
         }
     }
+}
+
+void addEntry(char *name)
+{
+    STACK n = createNewStack(name);     // creating stack
+    strcpy(arr[stackCount].name, name); // silly mistake srtcpy used for STING COPY PASTE OPERATION
+    arr[stackCount].ptr = n;            // silly mistake we alwaawa need to pass array key [n]
+    stackCount++;
+}
+
+STACK findStack(char *name)
+{
+    int i;
+
+    for (i = 0; i < stackCount; i++)
+    {
+        if (strcmp(arr[i].name, name) == 0)
+        {
+            return arr[i].ptr; // if pointer fount it return the pointer
+        }
+    }
+
+    return NULL; // if pointer not fount it return NULL
 }
