@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct node
 {
@@ -14,7 +15,7 @@ typedef struct node
 typedef struct Linked_list
 {
     int size;
-    NODE *head;
+    NODE head;
 
 } *LIST;
 
@@ -26,8 +27,10 @@ void printList(LIST li);
 
 void insertFisrt(NODE n1, LIST li);
 
-void deleteFisrt(LIST li);
+int  deleteFisrt(LIST li);
 
-void isEmpty(LIST li);
+int  isListEmpty(LIST li);
+
+void manual();
 
 #endif
