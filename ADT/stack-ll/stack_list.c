@@ -13,7 +13,7 @@ int isEmpty(STACK s)
 }
 int top(STACK s)
 {
-    printf("top() called\n");
+    // printf("top() called\n");  used for debugging 
 
     if (s->ll->head == NULL)
     {
@@ -21,7 +21,7 @@ int top(STACK s)
         return -1;
     }
 
-    printf("Head element = %d\n", s->ll->head->ele);
+    // printf("Head element = %d\n", s->ll->head->ele);  ued for debuggin 
 
     return s->ll->head->ele;
 }
@@ -37,8 +37,8 @@ int pop(STACK s)
 }
 void push(STACK s, int ele)
 {
-    printf("pussig form stack_list %d", ele);
+    // printf("pussig form stack_list %d", ele); used for dbugging
     NODE n = createNewNode(ele);
     insertFisrt(n, s->ll);
-    printf("pushing suceeded");
+    // printf("pushing suceeded");  used for debugging
 }

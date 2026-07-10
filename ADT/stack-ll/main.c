@@ -20,29 +20,28 @@ int main()
     printf("======   welcme to stack implimetioan program  =====\n");
     printf("====================================================\n\n");
 
-    // char name[20];
+    char userName[20];
 
-    // printf("please enter your nickname: ");
+    printf("please enter your username: ");
 
-    // scanf("%19s", name);
+    scanf("%19s", userName);
 
-    // getchar(); // when we use scanf in last \n remain it helps to crlear that
-
-    // printf("hello %s if you are new here type man ^ _ ^ :\n\n", name);
+    getchar(); // when we use scanf in last \n remain it helps to crlear that
 
     char cmd[100]; // defining the size of inpout possible in command
 
-    // printf("please ceate atlest one stack : ");
-    // char stkn[10];
-    // scanf("%9s", stkn);
-    // getchar();
+    printf("please ceate atlest create atlest one buy writeing stack name : ");
+    char stkn[10];
+    scanf("%9s", stkn);
+    getchar();
 
-    // addEntry(stkn);
+    addEntry(stkn);
+    printf("hello %s if you are new here type man ^ _ ^ \n\n", userName);
 
     while (1)
     {
 
-        printf("write your comman ~~> ");
+        printf("@%s ~~> ", userName);
 
         // fgets with stdin use to copy the dtring types in command line
         fgets(cmd, sizeof(cmd), stdin);
@@ -65,7 +64,7 @@ int main()
             {
                 printf("Pushing %s\n", val);
                 push(s, atoi(val)); // IMPORTANT : check the datatype before passing to fun
-                printf("push completed");
+                printf("push completed\n");
             }
             else
             {
