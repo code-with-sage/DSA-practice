@@ -52,9 +52,6 @@ int main()
         char *stackname = strtok(NULL, " \r\n");
         char *val = strtok(NULL, " \r\n");
 
-        printf("command=%s\n", command);
-        printf("stack=%s\n", stackname);
-        printf("value=%s\n", val);
 
         if (strcmp(command, "push") == 0) // strcmp() use to compare 2 tring and if both same it return 0
         {
@@ -82,6 +79,7 @@ int main()
             {
                 printf("Stack not found.\n");
             }
+            printf("removing suceeded: ");
         }
         else if (strcmp(command, "top") == 0)
         {
@@ -98,6 +96,7 @@ int main()
         else if (strcmp(command, "new") == 0)
         {
             addEntry(stackname);
+            printf("we created new stack %s", stackname);
         }
         else if (strcmp(command, "man") == 0)
         {
