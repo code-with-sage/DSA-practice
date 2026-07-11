@@ -27,20 +27,20 @@ int main()
 
         if (strcmp(cmd, "exit") == 0)
         {
-            printf("thanks for using tts");
+            printf("thanks for using tts\n");
             return 0;
         }
         else if (strcmp(cmd, "next") == 0)
         {
             USER temp = dequeue(bookingReq);
-            printf("%s", temp.name);
-            printf("%s", temp.bookingTime);
+            printf("%s : \n", temp.name);
+            printf("%s : \n", temp.bookingTime);
         }
         else if (strcmp(cmd, "book") == 0)
         {
             if (val == NULL)
             {
-                printf("Usage : book <username>\n");
+                printf("Usage : book <username> \n");
                 continue;
             }
             enqueue(bookingReq, val);
@@ -75,7 +75,7 @@ int main()
         }
         else
         {
-            printf("wring request please type man to see format ");
+            printf("wring request please type man to see format \n");
         }
     }
     return 0;
