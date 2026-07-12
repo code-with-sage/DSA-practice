@@ -6,7 +6,6 @@ int main()
 
     QUE q = createnewQue();
 
-
     char command[50];
 
     while (1)
@@ -25,34 +24,37 @@ int main()
         }
         else if (strcmp(cmd, "man") == 0)
         {
-            printf(
-                "================ FAST FOOD RESTAURANT ================\n"
-                "\n"
-                "COMMANDS\n"
-                "\n"
-                "order <table_number> <item_number>\n"
-                "    Place a new order.\n"
-                "\n"
-                "orders <filename>\n"
-                "    Read multiple orders from a file.\n"
-                "\n"
-                "serve\n"
-                "    Serve the oldest pending order.\n"
-                "\n"
-                "printorder\n"
-                "    Display all pending orders.\n"
-                "\n"
-                "total\n"
-                "    Display total pending orders.\n"
-                "\n"
-                "man\n"
-                "    Display this manual.\n"
-                "\n"
-                "exit\n"
-                "    Exit the application.\n"
-                "\n"
-                "Queue Policy : FIFO (First In First Out)\n"
-                "=====================================================\n");
+            printf("\n");
+            printf("==============================================================\n");
+            printf("               FAST FOOD RESTAURANT MANUAL\n");
+            printf("==============================================================\n\n");
+
+            printf("%-20s | %s\n", "COMMAND", "USE CASE");
+            printf("---------------------|----------------------------------------\n");
+
+            printf("%-20s | Place a single order\n",
+                   "order <table> <item>");
+
+            printf("%-20s | Load multiple orders from a file\n",
+                   "orders <filename>");
+
+            printf("%-20s | Serve the oldest pending order\n",
+                   "serve");
+
+            printf("%-20s | Display all pending orders\n",
+                   "printorder");
+
+            printf("%-20s | Show total pending orders\n",
+                   "total");
+
+            printf("%-20s | Display this manual\n",
+                   "man");
+
+            printf("%-20s | Exit the application\n",
+                   "exit");
+
+            printf("\nQueue Policy : First In First Out (FIFO)\n");
+            printf("==============================================================\n");
         }
         else if (strcmp(cmd, "order") == 0)
         {
@@ -69,7 +71,7 @@ int main()
                 printf("Cannot open file.\n");
             }
             char buff[50];
-            while (fgets(buff, sizeof(buff), fp)!= NULL) //fgets return NULL 
+            while (fgets(buff, sizeof(buff), fp) != NULL) // fgets return NULL
             {
 
                 char *comd = strtok(buff, " \n");
@@ -104,8 +106,6 @@ int main()
         {
             printf("wrong command please try agian \n");
         }
-
-      
     }
     return 0;
 }
