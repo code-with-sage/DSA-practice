@@ -11,6 +11,10 @@ int main()
     }
     fclose(fp);
 
-    
+    //lets caculate the time taken by insersion short for shorting different datasets 
+
+    struct timeval stating , ending; 
+
+
 
 }
