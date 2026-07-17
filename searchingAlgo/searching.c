@@ -60,31 +60,44 @@ int iter_binarySearchINT(int arr[], int n, int key)
 
     printf("element not found \n");
 
-    return -1 ;// elemt not found
+    return -1; // elemt not found
 }
 int rec_binarySearchINT(int arr[], int n, int key)
 {
-    if(n <= 0){
-         printf("Error: size of array must be greater than 0. \n");
+    if (n <= 0)
+    {
+        printf("Error: size of array must be greater than 0. \n");
         return -1;
     }
 
-    int low = 0 , high = n -1;
-    if (low > high){
+    int low = 0, high = n - 1;
+    if (low > high)
+    {
         return -1;
     }
 
     int mid = (low + high) / 2;
 
-    if (arr[mid] == key){
+    if (arr[mid] == key)
+    {
         return mid;
     }
-    else if (key < arr[mid]){
-        return rec_binarySearchINT(arr, mid-1, key);
+    else if (key < arr[mid])
+    {
+        return rec_binarySearchINT(arr, mid, key);
     }
-    else{
-         return rec_binarySearchINT(arr + mid + 1, n - mid - 1, key);
+    else
+    {
+        int rec = rec_binarySearchINT(arr + mid + 1, n - mid - 1, key);
 
+        //the we are simply using pointer arithmatic here Ar + mid + 1 will make the array start form 4th potion 
+        // n - mid - 1 we are reducing the size of array becuse we move the pointer to the right by mid + 1 
+
+        if (rec != -1)
+        {
+            return rec + mid + 1;
+
+            //lastly we are returning the actual arr index by adding the value how much we was reduce via pointer arithmatics 
+        }
     }
-   
 }
