@@ -4,9 +4,6 @@
 
 int main()
 {
-
-    FILE *fp = fopen("output.csv", "a");
-
     char cmd[100];
     while (1)
     {
@@ -40,7 +37,7 @@ int main()
                 continue; // Error reading file
             }
             struct timeval start, end;
-            
+
             gettimeofday(&start, NULL);
             int iter_result = iter_linearSearchINT(arr + 1, n, key); // Skip the first element
             gettimeofday(&end, NULL);
@@ -66,16 +63,29 @@ int main()
             printf("Iterative Binary Search: %d, Time: %ld microseconds\n", iter_binary_result, iter_binary_time);
             printf("Recursive Binary Search: %d, Time: %ld microseconds\n", rec_binary_result, rec_binary_time);
 
-            fprintf(fp, "%s,%d,%d,%ld,%d,%ld,%d,%ld,%d,%ld\n", filename, key, iter_result, iter_linear_time, rec_result, rec_linear_time, iter_binary_result, iter_binary_time, rec_binary_result, rec_binary_time);
+            FILE * fp = fopen("output.csv", "a");
 
+            if (fp == NULL)
+            {
+                perror("output.csv");
+                return 1;
+            }else{
+                printf("output.csv file opened successfully.\n");
+            }
+            fprintf(fp, "%ld,%ld,%ld,%ld\n",
+                    iter_linear_time,
+                    rec_linear_time,
+                    iter_binary_time,
+                    rec_binary_time);
+
+                    printf("Results written to output.csv\n");
             free(arr);
+            fclose(fp);
         }
         else
         {
             printf("Error: Unknown command %s\n", command);
         }
     }
-
-    fclose(fp);
     return 0;
 }
