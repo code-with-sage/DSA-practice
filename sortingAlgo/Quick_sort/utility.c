@@ -2,16 +2,16 @@
 
 void swap(int Arr[], int lo, int hi)
 {
-    int *temp = Arr[lo];
+    int temp = Arr[lo];
     Arr[lo] = Arr[hi];
     Arr[hi] = temp;
 }
-int readfile(char *filename)
+int *readfile(char *filename)
 {
     FILE *fp = fopen(filename, "r");
 
     if(fp == NULL){
-        return -1;
+        return NULL;
     }
     int n;
     fscanf(fp , "%d", &n);
@@ -20,7 +20,7 @@ int readfile(char *filename)
 
     int i = 0;
 
-    while ( fscanf(fp , "%d", Arr[i]) == EOF){
+    while ( fscanf(fp , "%d", &Arr[i]) == 1){
         i++;
 
     }

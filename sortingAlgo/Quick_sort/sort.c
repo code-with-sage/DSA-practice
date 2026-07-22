@@ -13,17 +13,17 @@ int partition(int Arr[] , int lo , int hi,int pivort_index){
             lower++;
         }
         while( higher > lower && Arr[higher] > pivort){
-            higher++;
+            higher--;
         }
 
         if ( lower < higher ){
             swap(Arr , lower , higher);
 
             lower++;
-            higher++;
+            higher--;
         }
     }
-    if( Arr[higher] > pivort && higher >= lower ){
+    if(Arr[higher] > pivort && higher >= lo){
         pivort_position = higher;
     }
     else{
@@ -42,7 +42,7 @@ void quich_sort(int Arr[] , int lo , int hi){
         return ; 
     }
 
-    while (lo < hi){
+    if (lo < hi){
         int pIndex = hi;
          pIndex =  partition(Arr , lo , hi, pIndex);
 

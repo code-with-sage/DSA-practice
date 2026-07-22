@@ -7,7 +7,7 @@
 #include <sys/time.h>
 
 void swap(int Arr[], int lo , int hi );
-int readfile(char *filename);
+int *readfile(char *filename);
 void write_in_file(int Arr[] , int size, const char *filename);
 
 #endif
