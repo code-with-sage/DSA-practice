@@ -24,7 +24,25 @@ int readfile(char *filename)
         i++;
 
     }
+    fclose(fp);
 
     return Arr;
 
+}
+
+void write_in_file(int Arr[], int size, const char *filename)
+{
+    FILE *fp = fopen(filename, "w");
+
+    if (fp == NULL)
+    {
+        return;
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        fprintf(fp, "%d\n", Arr[i]);
+    }
+
+    fclose(fp);
 }
